@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>John Paul Mangaoang | Software Engineering Student & Freelance Developer</title>
+  <meta name="description" content="Portfolio of John Paul Mangaoang, a Software Engineering student and beginner freelance developer from the Philippines." />
+  <meta name="theme-color" content="#0d1117" />
+  <!-- "js" class lets CSS know JavaScript is running (used for the terminal typing effect) -->
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="#home" class="logo" aria-label="John Paul Mangaoang, home"><span class="g">~/</span>jp<span class="cursor" aria-hidden="true">_</span></a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="hero-hello"><span class="g">&gt;</span> Hello, world. I'm</p>
+          <h1>John Paul Mangaoang</h1>
+          <p class="hero-title">Software Engineering Student and Beginner Freelance Developer</p>
+          <p class="hero-intro">
+            I'm from the Philippines and I build practical software. I'm comfortable
+            with Python, Java, and C++, and I'm now learning web development and UI design.
+          </p>
+          <div class="btn-row">
+            <a href="#projects" class="btn btn-primary">View My Projects</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </div>
+        </div>
+
+        <!-- Terminal window. Lines appear one by one (see script.js). Edit the text freely. -->
+        <div class="window" aria-label="Terminal introduction">
+          <div class="window-bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="window-title">bash: jp@portfolio</span>
+          </div>
+          <div class="terminal" id="terminal">
+            <p class="t-line"><span class="prompt">$</span> whoami</p>
+            <p class="t-line out">John Paul Mangaoang</p>
+            <p class="t-line"><span class="prompt">$</span> cat role.txt</p>
+            <p class="t-line out">Software Engineering Student</p>
+            <p class="t-line out">Beginner Freelance Developer</p>
+            <p class="t-line"><span class="prompt">$</span> echo $LOCATION</p>
+            <p class="t-line out">Philippines</p>
+            <p class="t-line"><span class="prompt">$</span> ls strengths/</p>
+            <p class="t-line out"><span class="c1">python</span>  <span class="c2">java</span>  <span class="c3">cpp</span></p>
+            <p class="t-line"><span class="prompt">$</span> <span class="cursor" aria-hidden="true">&#9608;</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2><span class="cm">//</span> About Me</h2>
+        <div class="window">
+          <div class="window-bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="window-title">about.md</span>
+          </div>
+          <!-- Each <p> gets an automatic line number in CSS -->
+          <div class="editor">
+            <p>
+              I'm a Software Engineering student interested in creating practical
+              software solutions, websites, automation tools, and simple business systems.
+            </p>
+            <p>
+              I like turning everyday problems into programs that save time and keep
+              information organized.
+            </p>
+            <p>
+              I'm just starting out as a freelance developer, so I focus on clear
+              communication, clean code, and learning from every project.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <!-- To add a skill, copy one <li> and change the text. -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2><span class="cm">//</span> Skills</h2>
+        <p class="section-lead">The languages and tools I work with, grouped by how I use them.</p>
+
+        <div class="skill-grid">
+          <div class="window">
+            <div class="window-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="window-title">languages</span></div>
+            <ul class="chips"><li>Python</li><li>Java</li><li>C++</li></ul>
+          </div>
+          <div class="window">
+            <div class="window-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="window-title">web &amp; data</span></div>
+            <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Flask</li><li>SQLite</li></ul>
+          </div>
+          <div class="window">
+            <div class="window-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="window-title">tools</span></div>
+            <ul class="chips"><li>Git and GitHub</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <!-- Replace each href="#" with your real GitHub or live demo link. -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2><span class="cm">//</span> Projects</h2>
+        <p class="section-lead">Descriptions are short for now. Add details once each project is ready to share.</p>
+
+        <div class="cards">
+          <article class="window card">
+            <div class="window-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="window-title">savings-tracker/</span></div>
+            <div class="card-body">
+              <h3>Savings Tracker System</h3>
+              <p>A system for recording and reviewing personal savings. Details coming soon.</p>
+              <ul class="tags" aria-label="Technologies used"><li>Python</li><li>Flask</li><li>SQLite</li></ul>
+              <div class="card-links">
+                <a href="#" class="btn btn-primary btn-sm">View Project</a>
+                <a href="#" class="text-link">GitHub repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="window card">
+            <div class="window-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="window-title">student-org-site/</span></div>
+            <div class="card-body">
+              <h3>Student Organization Website</h3>
+              <p>A website for a student organization. Details coming soon.</p>
+              <ul class="tags" aria-label="Technologies used"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+              <div class="card-links">
+                <a href="#" class="btn btn-primary btn-sm">View Project</a>
+                <a href="#" class="text-link">GitHub repo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="window card">
+            <div class="window-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="window-title">portfolio/</span></div>
+            <div class="card-body">
+              <h3>Personal Portfolio Website</h3>
+              <p>The website you are viewing, built to showcase my work and services.</p>
+              <ul class="tags" aria-label="Technologies used"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+              <div class="card-links">
+                <a href="#" class="btn btn-primary btn-sm">View Project</a>
+                <a href="#" class="text-link">GitHub repo</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" class="section">
+      <div class="container">
+        <h2><span class="cm">//</span> Services</h2>
+        <p class="section-lead">What I can help you with as a beginner freelance developer.</p>
+
+        <div class="cards">
+          <article class="service">
+            <h3><span class="fn">automate</span>()</h3>
+            <p><strong>Python automation tools.</strong> Scripts that handle repetitive tasks like file organizing and data processing.</p>
+          </article>
+          <article class="service">
+            <h3><span class="fn">buildApp</span>()</h3>
+            <p><strong>Simple web applications.</strong> Small, useful apps built with Python (Flask), SQLite, and plain web technologies.</p>
+          </article>
+          <article class="service">
+            <h3><span class="fn">manageRecords</span>()</h3>
+            <p><strong>Business record-management systems.</strong> Simple systems to store, search, and update records.</p>
+          </article>
+          <article class="service">
+            <h3><span class="fn">designUI</span>()</h3>
+            <p><strong>Website UI and responsive design.</strong> Clean layouts that work on phones, tablets, and computers.</p>
+          </article>
+          <article class="service">
+            <h3><span class="fn">maintain</span>()</h3>
+            <p><strong>Basic website maintenance.</strong> Content updates, small fixes, and layout adjustments.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section">
+      <div class="container contact-grid">
+        <div>
+          <h2><span class="cm">//</span> Contact</h2>
+          <p class="section-lead">Have a project in mind? Send me a message and I'll get back to you.</p>
+          <!-- GitHub and LinkedIn are still placeholders: replace them when ready. -->
+          <ul class="contact-list">
+            <li><strong>Email</strong><a href="mailto:jhonpaulmangaoang@gmail.com">jhonpaulmangaoang@gmail.com</a></li>
+            <li><strong>Phone</strong><a href="tel:+639213360266">09213360266</a></li>
+            <!-- Facebook shows the name only. To make it a link, replace the <span> with:
+                 <a href="YOUR_PROFILE_URL" target="_blank" rel="noopener">JP Mangaoang</a> -->
+            <li><strong>Facebook</strong><span>JP Mangaoang</span></li>
+            <li><strong>GitHub</strong><a href="https://github.com/your-username" target="_blank" rel="noopener">github.com/your-username</a></li>
+            <li><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">linkedin.com/in/your-profile</a></li>
+          </ul>
+        </div>
+
+        <!-- Form design only. See script.js for how to connect it later. -->
+        <form class="window contact-form" id="contact-form" novalidate>
+          <div class="window-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="window-title">new-message</span></div>
+          <div class="form-body">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error" />
+              <p class="error" id="name-error" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error" />
+              <p class="error" id="email-error" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+              <p class="error" id="message-error" role="alert"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Send message</button>
+            <p class="form-status" id="form-status" role="status"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> John Paul Mangaoang. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,253 @@
+/* =========================================================
+   DEV-THEMED PORTFOLIO STYLES - John Paul Mangaoang
+   Look: dark code editor + terminal.
+   Tip: change colors and fonts in the :root block below.
+   ========================================================= */
+
+/* ---------- 1. DESIGN TOKENS ---------- */
+:root {
+  --bg: #0d1117;          /* page background */
+  --panel: #161b22;       /* window / card background */
+  --bar: #1f2630;         /* window title bar */
+  --line: #30363d;        /* borders */
+  --ink: #e6edf3;         /* main text */
+  --muted: #9aa7b6;       /* secondary text */
+  --blue: #58a6ff;        /* primary accent */
+  --green: #3fb950;       /* prompt / success */
+  --purple: #bc8cff;      /* function names */
+  --orange: #f0a15a;      /* tertiary accent */
+  --radius: 10px;
+  --font: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --mono: ui-monospace, "JetBrains Mono", "Cascadia Code", "Fira Code", Consolas, Menlo, monospace;
+  --header-h: 64px;
+}
+
+/* ---------- 2. BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--bg);
+  /* Faint dot grid, like an editor canvas */
+  background-image: radial-gradient(#212a36 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 0.6em; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); letter-spacing: -0.02em; }
+h2 { font-family: var(--mono); font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 600; }
+h3 { font-size: 1.15rem; }
+p  { margin: 0 0 1em; }
+a  { color: var(--blue); }
+ul { padding: 0; margin: 0; list-style: none; }
+
+.g  { color: var(--green); }
+.cm { color: #6e7b8b; margin-right: 0.35em; }   /* the "//" comment marker */
+.fn { color: var(--purple); }
+
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+
+.container { width: min(1100px, 100% - 2.5rem); margin-inline: auto; }
+
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem; z-index: 200;
+  background: var(--blue); color: #0d1117; padding: 0.6rem 1rem; border-radius: 6px;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0.75rem; }
+
+/* ---------- 3. NAVIGATION ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13, 17, 23, 0.88); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: var(--header-h); }
+.logo { font-family: var(--mono); font-weight: 700; font-size: 1.2rem; color: var(--ink); text-decoration: none; }
+
+.nav-menu { display: flex; gap: 0.2rem; }
+.nav-menu a {
+  display: block; padding: 0.45rem 0.85rem; border-radius: 6px;
+  font-family: var(--mono); font-size: 0.92rem;
+  color: var(--muted); text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-menu a:hover { color: var(--ink); background: var(--bar); }
+.nav-menu a.active { color: var(--blue); background: rgba(88, 166, 255, 0.12); }
+
+.nav-toggle {
+  display: none; width: 44px; height: 44px; padding: 0; background: none; border: 0;
+  cursor: pointer; border-radius: 8px;
+  flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+}
+.bar { width: 22px; height: 2px; background: var(--ink); transition: transform 0.25s, opacity 0.25s; }
+.nav-toggle[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Blinking text cursor (used in logo and terminal) */
+.cursor { color: var(--green); animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- 4. BUTTONS ---------- */
+.btn {
+  display: inline-block; padding: 0.7rem 1.4rem; border-radius: 8px;
+  font-family: var(--mono); font-size: 0.95rem; font-weight: 600;
+  text-decoration: none; cursor: pointer; border: 1.5px solid transparent;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--blue); color: #0d1117; }
+.btn-primary:hover { box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.25); }
+.btn-outline { border-color: var(--line); color: var(--ink); background: transparent; }
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+.btn-sm { padding: 0.45rem 1rem; font-size: 0.88rem; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.6rem; }
+
+/* ---------- 5. "WINDOW" COMPONENT (reused everywhere) ---------- */
+.window {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+.window-bar {
+  display: flex; align-items: center; gap: 0.8rem;
+  padding: 0.6rem 1rem; background: var(--bar); border-bottom: 1px solid var(--line);
+}
+.dots { display: flex; gap: 6px; }
+.dots i { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; }
+.dots i:nth-child(2) { background: #febc2e; }
+.dots i:nth-child(3) { background: #28c840; }
+.window-title { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); }
+
+/* ---------- 6. HERO ---------- */
+.hero { padding: 4.5rem 0 5rem; position: relative; }
+/* Soft glow behind the hero */
+.hero::before {
+  content: ""; position: absolute; top: -80px; right: 5%; width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(88, 166, 255, 0.16), transparent 70%);
+  pointer-events: none;
+}
+.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; position: relative; }
+.hero-hello { font-family: var(--mono); color: var(--muted); margin-bottom: 0.3rem; }
+.hero-title { font-size: 1.2rem; font-weight: 600; color: var(--blue); }
+.hero-intro { max-width: 52ch; color: var(--muted); }
+
+.terminal { padding: 1.2rem 1.4rem; font-family: var(--mono); font-size: 0.92rem; line-height: 1.75; min-height: 18rem; }
+.t-line { margin: 0; }
+.t-line.out { color: var(--ink); padding-left: 1.2rem; }
+.prompt { color: var(--green); margin-right: 0.5rem; }
+.c1 { color: var(--blue); } .c2 { color: var(--orange); } .c3 { color: var(--purple); }
+
+/* Typing effect: with JS on, lines start hidden and script.js reveals them */
+.js .t-line { opacity: 0; transform: translateY(4px); }
+.js .t-line.show { opacity: 1; transform: none; transition: opacity 0.25s, transform 0.25s; }
+
+/* ---------- 7. GENERIC SECTIONS ---------- */
+.section { padding: 4.5rem 0; }
+.section-lead { color: var(--muted); max-width: 60ch; margin-bottom: 2rem; }
+
+/* ---------- 8. ABOUT (editor with line numbers) ---------- */
+.editor { counter-reset: line; padding: 1.2rem 1.4rem 0.4rem 0; }
+.editor p {
+  counter-increment: line; position: relative;
+  margin: 0 0 1em; padding-left: 4rem; max-width: 80ch;
+}
+.editor p::before {
+  content: counter(line); position: absolute; left: 0; width: 2.6rem;
+  text-align: right; font-family: var(--mono); color: #5b6776; user-select: none;
+}
+
+/* ---------- 9. SKILLS ---------- */
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; align-items: start; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 1.2rem; }
+.chips li {
+  font-family: var(--mono); font-size: 0.9rem; padding: 0.4rem 0.9rem;
+  border: 1px solid var(--line); border-radius: 6px; background: var(--bg);
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.chips li:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-2px); }
+
+/* ---------- 10. CARDS (projects + services) ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; }
+.card { transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; }
+.card:hover { transform: translateY(-4px); border-color: var(--blue); box-shadow: 0 14px 36px rgba(88, 166, 255, 0.12); }
+.card-body { padding: 1.4rem; }
+.card-body p { color: var(--muted); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.3rem; }
+.tags li {
+  font-family: var(--mono); font-size: 0.8rem; padding: 0.15rem 0.65rem;
+  color: var(--green); background: rgba(63, 185, 80, 0.12); border-radius: 999px;
+}
+.card-links { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+.text-link { font-family: var(--mono); font-size: 0.9rem; }
+
+/* Services: plain cards with a function-style heading */
+.service {
+  background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--purple);
+  border-radius: var(--radius); padding: 1.4rem;
+  transition: transform 0.25s, border-color 0.25s;
+}
+.service:hover { transform: translateY(-4px); border-color: var(--blue); border-left-color: var(--purple); }
+.service h3 { font-family: var(--mono); font-size: 1.05rem; }
+.service p { color: var(--muted); margin: 0; }
+.service strong { color: var(--ink); }
+
+/* ---------- 11. CONTACT ---------- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: start; }
+.contact-list li { margin-bottom: 1rem; display: flex; flex-direction: column; word-break: break-word; }
+.contact-list strong { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+
+.form-body { padding: 1.5rem; }
+.field { margin-bottom: 1.1rem; }
+.field label { display: block; font-family: var(--mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 0.35rem; }
+.field input, .field textarea {
+  width: 100%; padding: 0.7rem 0.9rem; font: inherit; color: var(--ink);
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field input:focus, .field textarea:focus {
+  outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.25);
+}
+.field.invalid input, .field.invalid textarea { border-color: #ff7b72; }
+.error { color: #ff7b72; font-size: 0.9rem; margin: 0.3rem 0 0; min-height: 1.2em; }
+.form-status { margin: 1rem 0 0; color: var(--green); font-family: var(--mono); font-size: 0.9rem; }
+
+/* ---------- 12. FOOTER ---------- */
+.footer { border-top: 1px solid var(--line); text-align: center; padding: 1.8rem 0; color: var(--muted); font-family: var(--mono); font-size: 0.88rem; }
+.footer p { margin: 0; }
+
+/* ---------- 13. RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero { padding-top: 3rem; }
+  .terminal { min-height: 0; }
+}
+
+/* Mobile: hamburger + dropdown menu */
+@media (max-width: 760px) {
+  .nav-toggle { display: flex; }
+  .nav-menu {
+    position: absolute; top: var(--header-h); left: 0; right: 0; display: none;
+    flex-direction: column; gap: 0; padding: 0.5rem 1.25rem 1rem;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu a { padding: 0.8rem 0.5rem; }
+  .section { padding: 3.2rem 0; }
+  .editor p { padding-left: 3.2rem; }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .t-line { opacity: 1; transform: none; }
+}
